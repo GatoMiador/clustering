@@ -195,8 +195,5 @@ def multi_convert():
             "ventilador4.csv"
         ])
 
-    p.close()
-    p.join()
-
 if __name__ == '__main__':
     multi_convert()
