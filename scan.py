@@ -7,6 +7,7 @@ Created on Tue Nov 16 08:34:12 2022
 """
 
 import pandas as pd
+import matplotlib.pyplot as plt
 
 def scan(path):
     import os
@@ -21,9 +22,9 @@ def scan(path):
     frequencia = 60
     # Tempo para considerar o sinal estável, isso remove o "spike" inicial de algumas cargas
     tempo_estabilização = amostra_por_ciclo*2
-    # Ciclos a capturar antes do evento
+    # Ciclos a capturar antes do inicio
     n_before = amostra_por_ciclo * 2
-    # Ciclos a capturar depois do evento
+    # Ciclos a capturar depois do inicio
     n_after = 5 * frequencia * amostra_por_ciclo
     # Porcentagem da potência a manter para considerar que o circuito ativou
     p_min = 0.9
@@ -82,6 +83,11 @@ def scan(path):
                             cmp = cmp[0:max]
                             # Calcula a correlação de Pearson com o degrau
                             ac['pearson'] = scipy.stats.pearsonr(cmp, cut).statistic
+
+#                            plt.figure()
+#                            plt.title(filename + ", pearson: " + str(ac['pearson']) )
+#                            plt.plot(cmp)
+#                            plt.plot(cut.tolist() )
 
                             ac['P'] = amostra['P']# - ac['P']
                             ac['Q'] = amostra['Q']# - ac['Q']

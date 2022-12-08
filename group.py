@@ -7,7 +7,7 @@ Created on Fri Dec  2 11:27:28 2022
 """
 
 import pandas as pd
-from sklearn.cluster import KMeans # https://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html
+from sklearn.cluster import KMeans
 from sklearn.cluster import DBSCAN
 
 table = pd.read_csv("cargas.csv")
