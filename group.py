@@ -33,10 +33,10 @@ lst_sse_peak = processa_joelho(lst_sse)
 # Encontra o grupo ótimo
 best_k=lst_sse_peak.index(max(lst_sse_peak))+1
 
-table['group'] = KMeans(n_clusters=best_k).fit_predict(data)
+table['K-Means'] = KMeans(n_clusters=best_k).fit_predict(data)
 
 # Processa com o DBSCAN aqui
 minPts = len(data.columns) + 1
 clustering = DBSCAN(eps=0.33, min_samples=len(data.columns) + 1).fit(data)
 
-table['group_DBSCAN'] = clustering.labels_
+table['DBSCAN'] = clustering.labels_
